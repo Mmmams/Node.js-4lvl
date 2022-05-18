@@ -1,0 +1,57 @@
+{
+  "name": "node.js-4lvl",
+  "version": "1.0.0",
+  "description": "Pet project for pass assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/index.ts",
+    "predev": "npm run swagger",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
+    "swagger": "tsoa spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mmmams/Node.js-4lvl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mmmams/Node.js-4lvl/issues"
+  },
+  "homepage": "https://github.com/Mmmams/Node.js-4lvl#readme",
+  "devDependencies": {
+    "@types/amqplib": "^0.8.2",
+    "@types/express": "^4.17.13",
+    "@types/faker": "^5.1.5",
+    "@types/jest": "^27.4.1",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.21",
+    "@types/swagger-ui-express": "^4.1.3",
+    "concurrently": "^7.0.0",
+    "faker": "^5.1.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.6.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "amqplib": "^0.9.0",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.3",
+    "redis": "^4.1.0",
+    "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.3.0",
+    "tsoa": "^3.2.1",
+    "typeorm": "^0.2.44"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "ts-node src/index.ts"
+  }
+}
