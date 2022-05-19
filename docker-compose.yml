@@ -3,24 +3,32 @@ version: "3"
 services:
   db:
     image: postgres:12
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
     environment:
       - POSTGRES_DB=express-ts
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: "rabbitmq"
-    ports:
-      - 5672:5672
-      - 15672:15672
     networks:
-      - rabbitmq_go_net
+      - backend
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   redis:
-    container_name: redis-cache
-    image: redis
+    image: "redis:alpine"
+    hostname: redis
     ports:
       - "6379:6379"
+    networks:
+      - backend
+
   app:
     build:
       context: .
@@ -33,11 +41,14 @@ services:
       - db
       - redis
       - rabbitmq
+    networks:
+      - backend
     environment:
       - POSTGRES_DB=express-ts
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=db
+
 networks:
-  rabbitmq_go_net:
+  backend:
     driver: bridge

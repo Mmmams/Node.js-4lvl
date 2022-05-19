@@ -1,19 +1,18 @@
 import * as express from "express";
-import { a, createOrder, getOrders } from "../repositories/order.repository";
+import {
+  createOrder,
+  doOrder,
+  getOrders,
+} from "../repositories/order.repository";
 
 const router = express.Router();
 
-router.get("/orders/add", function (req, res) {
-  console.log("orders");
-  res.send("Wiki home page");
+router.get("/orders/do", async function (req, res) {
+  return await doOrder(req, res);
 });
 
 router.post("/orders/create", async function (req, res) {
-  return await createOrder(req, res);
-});
-
-router.post("/orders/createe", async function (req, res) {
-  return await a();
+  return createOrder(req, res);
 });
 
 router.get("/orders/all", async function (req, res) {

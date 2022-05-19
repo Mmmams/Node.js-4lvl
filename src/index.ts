@@ -1,4 +1,4 @@
-const redis = require("redis");
+import { createClient } from "redis";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 import express, { Application } from "express";
@@ -10,7 +10,8 @@ import dbConfig from "./config/database";
 const PORT = process.env.PORT || 8000;
 
 const redisPort = 6379;
-export const client = redis.createClient(redisPort);
+export const client = createClient({ url: `redis://redis:${redisPort}` });
+client.connect();
 
 client.on("error", (err: any) => {
   console.log(err);
@@ -32,7 +33,6 @@ app.use(
 );
 
 app.use(router);
-
 createConnection(dbConfig)
   .then((_connection) => {
     app.listen(PORT, () => {
