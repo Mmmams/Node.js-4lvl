@@ -6,6 +6,8 @@ import swaggerUi from "swagger-ui-express";
 
 import router from "./routes/routes";
 import dbConfig from "./config/database";
+//@ts-ignore
+import * as swaggerDoc from "./config/swagger.json";
 
 const PORT = process.env.PORT || 8000;
 
@@ -21,16 +23,7 @@ const app: Application = express();
 
 app.use(express.json());
 app.use(express.static("public"));
-
-app.use(
-  "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(undefined, {
-    swaggerOptions: {
-      url: "/swagger.json",
-    },
-  })
-);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.use(router);
 createConnection(dbConfig)

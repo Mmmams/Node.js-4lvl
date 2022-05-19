@@ -43,7 +43,7 @@
     "pg": "^8.7.3",
     "redis": "^4.1.0",
     "reflect-metadata": "^0.1.13",
-    "swagger-ui-express": "^4.3.0",
+    "swagger-ui-express": "^4.4.0",
     "tsoa": "^3.2.1",
     "typeorm": "^0.2.44"
   },

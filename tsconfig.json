@@ -11,8 +11,8 @@
     "paths": {
       "test/*": ["test/*"]
     },
-    "noImplicitAny": false
-  },
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.test.ts"]
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  }
 }

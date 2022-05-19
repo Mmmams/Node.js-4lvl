@@ -60,10 +60,10 @@ export async function doOrder(req, res) {
 
       channel.ack(msg);
       channel.cancel("myconsumer");
-      // return res.status(200).send({
-      //   message: "Order have done",
-      //   order,
-      // });
+      return res.status(200).send({
+        message: "Order have done",
+        order,
+      });
     } else {
       return res.status(200).send({
         message: "There are no orders in queue",

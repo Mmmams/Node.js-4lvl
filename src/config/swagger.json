@@ -1,0 +1,31 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My User Project CRUD",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "order/create",
+      "description": "Create new order in rabbitmq. Order has name and price fields which should be wrotten manualy and id generated automaticaly"
+    },
+    {
+      "name": "order/do",
+      "description": "Take order from queue and add in database, also set orders in redis cache"
+    },
+    {
+      "name": "order/all",
+      "description": "Show all orders set in redis cache"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"]
+}
